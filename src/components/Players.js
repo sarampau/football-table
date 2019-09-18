@@ -18,14 +18,10 @@ class Players extends Component {
     }
 
     render() {
-        // console.log(this.state.players);
         
         return (
             <div>
-                {this.state.players.map(player => {
-                    console.log(player.strPlayer);
-                    return <h1 key={player.idPlayer}>{player.strPlayer}</h1>
-                })}
+                <h1>players</h1>
             </div>
         )
     }

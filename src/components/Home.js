@@ -6,7 +6,13 @@ class Home extends Component {
         super(props);
         
     }
-
+    render() {
+        return (
+            <div>
+                <h1>soccer</h1>
+            </div>
+        )
+    }
 }
 
 export default Home;
