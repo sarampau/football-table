@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/Home.css';
 
 function Home() {
 
@@ -9,31 +10,41 @@ function Home() {
     useEffect(() => {
         axios.get('https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=4328&s=1920')
         .then((r) =>
-        setSeason(r.data.table.sort((a, b) => (a.total < b.total) ? 1 : (a.total === b.total) ? ((b.goalsdifference < a.goalsdifference) ? 1 : -1) : -1 ))
+        setSeason(r.data.table.sort((a, b) => (a.total < b.total) ? 1 : (a.total === b.total) ? ((a.goalsdifference < b.goalsdifference) ? 1 : -1) : -1 ))
     )
 },[])
 
-    // console.log(season)
+    console.log(season)
 return (
         <div>
-            <h1>home</h1>
+            <h1>Futbolero</h1>
             <table>
                 <tbody>
                     <tr>
-                        <th>premier league</th>
+                        <th>Team</th>
+                        <th>Played</th>
+                        <th>Won</th>
+                        <th>Draw</th>
+                        <th>Lost</th>
+                        <th>For</th>
+                        <th>Against</th>
+                        <th>+/-</th>
+                        <th>Points</th>
                     </tr>
                     
                         {
                             season.map((team) => {
                                 return(
                                     <tr key={team.teamid}>
-                                        <td>{setPosition(position + 1)}</td>
                                         <td>{team.name}</td>
-                                        <td>{team.goalsdifference}</td>
-                                        {/* <td>{team.played}</td>
+                                        <td>{team.played}</td>
                                         <td>{team.win}</td>
                                         <td>{team.draw}</td>
-                                        <td>{team.loss}</td> */}
+                                        <td>{team.loss}</td>
+                                        <td>{team.goalsfor}</td>
+                                        <td>{team.goalsagainst}</td>
+                                        <td style={{float: 'right'}}>{team.goalsdifference}</td>
+                                        <td>{team.total}</td>
                                     </tr>
                                 )
                             })
