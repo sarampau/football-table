@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import '../styles/Home.css';
 
 function Home() {
@@ -70,9 +71,12 @@ return (
                 {
                     fixtures.map((event) => {
                         return (
-                            <div>
-                                <p>{event.strHomeTeam} {event.intHomeScore}</p>
-                                <p>{event.strAwayTeam} {event.intAwayScore}</p>
+                            <div className='match-container' key={event.idEvent}>
+                                <div className='match'><p>Matchday {event.intRound}</p></div>
+                                <div className='home'>{event.strHomeTeam}</div>
+                                <div className='score'> {event.intHomeScore} - {event.intAwayScore}</div>
+                                <div className='away'>{event.strAwayTeam}</div>
+                                <div className='date'>{moment(event.dateEvent).format('MMMM Do YYYY')}</div>
                             </div>
                         )
                     })

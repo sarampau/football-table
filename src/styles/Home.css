@@ -1,8 +1,12 @@
+/* Container that holds table and fixtures. */
+
 .home-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 }
+
+/* Container that holds table */
 
 table {
     counter-reset: rowNumber;
@@ -20,14 +24,49 @@ table tr td:first-child::before {
     margin-right: 0.5em;
 }
 
+/* Container that holds fixtures */
+
 .fixtures-container {
     overflow: auto;
     height: 90vh;
 }
 
-.fixtures-container div {
+.match-container {
+    display: grid;
+    grid-template-areas:
+        'match match match'
+        'home score away'
+        'date date date';
     border-style: solid;
     border-color: black;
     margin-bottom: 5px;
     
+}
+
+.match {
+    
+    grid-area: match;
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    grid-area: home;
+    text-align: center;
+}
+
+.score {
+    grid-area: score;
+    text-align: center;
+}
+
+.away {
+    grid-area: away;
+    text-align: center;
+}
+
+.date {
+    grid-area: date;
+    text-align: center;
 }
