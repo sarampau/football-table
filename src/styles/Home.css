@@ -1,3 +1,9 @@
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
 table {
     counter-reset: rowNumber;
 }
@@ -12,4 +18,10 @@ table tr td:first-child::before {
     content: counter(rowNumber);
     min-width: 1em;
     margin-right: 0.5em;
+}
+
+.fixtures-container div {
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 5px;
 }
