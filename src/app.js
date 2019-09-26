@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Teams from './components/Teams';
 import Players from './components/Players';
+import './styles/App.css';
 
 class App extends Component {
 

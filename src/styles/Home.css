@@ -20,8 +20,14 @@ table tr td:first-child::before {
     margin-right: 0.5em;
 }
 
+.fixtures-container {
+    overflow: auto;
+    height: 90vh;
+}
+
 .fixtures-container div {
     border-style: solid;
     border-color: black;
     margin-bottom: 5px;
+    
 }
