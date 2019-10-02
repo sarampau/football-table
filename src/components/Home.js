@@ -7,6 +7,7 @@ function Home() {
 
     const [table, setTable] = useState([]);
     const [fixtures, setFixtures] = useState([]);
+    const [teams, setTeams] = useState([]);
 
     useEffect(() => {
         // const fetchData = async () => {
@@ -22,15 +23,23 @@ function Home() {
             .catch(err => {
                 console.log(err.message);
             });
+        axios.get('https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=4328')
+            .then((r) => 
+                setTeams(r.data.teams),
+            )
+            .catch(err => {
+                console.log(err.message);
+            })
         axios.get('https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4328&s=1920')
-            .then ((res) => 
-                setFixtures(res.data.events)
+            .then ((r) => 
+                setFixtures(r.data.events)
             )
             .catch(err => {
                 console.log(err.message);
             });
-        }, []);
-console.log(fixtures)
+    }, []);
+    console.log('teams: ', teams);
+console.log('table: ', table);
 
 return (
         <div className='home-container'>
@@ -50,9 +59,16 @@ return (
                     
                         {
                             table.map((team) => {
+                                let crest = '';
+                                for (let i = 0; i < teams.length; i++) {
+                                    if (team.idTeam === teams[i].idTeam) {
+                                        crest = teams[i].strTeamBadge
+                                    }
+                                }
+                                console.log('crest: ', crest);
                                 return (
                                     <tr key={team.teamid}>
-                                        <td>{team.name}</td>
+                                        <td><img src={crest}/>{team.name}</td>
                                         <td>{team.played}</td>
                                         <td>{team.win}</td>
                                         <td>{team.draw}</td>
